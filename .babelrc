@@ -1,0 +1,8 @@
+/**
+@babel/preset-env 将es6转成es5语法
+@babel/preset-react 支持jsx语法
+**/
+
+{
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
