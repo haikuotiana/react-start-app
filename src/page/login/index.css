@@ -6,9 +6,9 @@
     align-items: center;
     background: #eee;
 }
-.login_form{
-    width: 300px;
-    height: 300px;
+.login_formBox{
+    width: 400px;
+    height: 400px;
     background: #fff;
     border-radius: 10px;
     display: flex;
@@ -18,8 +18,23 @@
     padding: 20px;
     box-sizing: border-box;
 }
-.login_form img{
+.login_formBox img{
     width: 100px;
     display: block;
     margin-bottom: 20px;
+}
+.login_input .login-form {
+    max-width: 300px;
+}
+.login_input .login-form-forgot {
+    float: right;
+}
+.login_input .ant-col-rtl .login-form-forgot {
+    float: left;
+}
+.login_input .login-form-button {
+    width: 100%;
+}
+.login_input .ant-space-item{
+    width: 100%;
 }

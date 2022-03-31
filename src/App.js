@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link,Outlet } from "react-router-dom";
 class App extends React.Component{
     render(){
         return (
@@ -11,9 +11,10 @@ class App extends React.Component{
                     paddingBottom: "1rem"
                     }}
                 >
-                    <Link to="/index">Invoices</Link> |{" "}
-                    <Link to="/login">Expenses</Link>
+                    <Link to="/index">index</Link> |{" "}
+                    <Link to="/login">login</Link>
                 </nav>
+                <Outlet/>
             </div>
         )
     }

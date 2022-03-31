@@ -1,0 +1,8 @@
+/node_modules/
+/package-lock.json
+/dist/
+/dist.zip
+/.idea/
+/.git/
+/yarn.lock
+node_modules
