@@ -1,12 +1,12 @@
-import './index.less'
+import React from 'react';
 import { Outlet } from 'react-router-dom'
 import HeadBar from './headBar'
-import SideBar from './sideBar'
+// import SideBar from './sideBar'
 
 function PageLayout () {
   return (
     <div className="c-PageLayout-index">
-      <SideBar />
+      {/* <SideBar /> */}
 
       <div className="appMainWrap">
         <HeadBar />

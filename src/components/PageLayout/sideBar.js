@@ -1,13 +1,13 @@
 import './sideBar.css'
+import React from 'react';
 import { Layout, Menu } from 'antd'
 import { Link, useLocation } from 'react-router-dom'
 import { useStore, observer } from '@/hooks/storeHook'
-import { routes } from '@/router'
+import  routes  from '@/router'
 import { getIsCanAccess } from '@/utils/appTools'
-import { RoutesItemTypeNew } from '@/types/routes'
 
 const { Sider } = Layout
-const { SubMenu, Item: ItemMenu } = Menu
+const { SubMenu, ItemMenu } = Menu
 
 function SideBar () {
   const { commonStore } = useStore()
@@ -19,52 +19,52 @@ function SideBar () {
   /**
    * 根据路由配置自动生成侧边菜单
    */
-  const openKeys: string[] = [] // 用于根据当前路由默认展开子菜单
-  const menuList = getMenuList()
-  // 递归获取层级菜单
-  function getMenuList () {
-    const getList: any = (routeList = [], prePath = '') => {
-      let menuList: JSX.Element[] = []
-      routeList.forEach((v: RoutesItemTypeNew) => {
-        v.meta = v.meta || {}
-        if (v.redirect || v.path === '*' || v.meta.hideMenu) {
-          return
-        }
-        if (!getIsCanAccess(v.meta.accessId)) {
-          return
-        }
-        if (v.path === '/') {
-          menuList = menuList.concat(getList(v.children, '/'))
-        } else if (v.path !== undefined) {
-          const currentPath = prePath + v.path
-          if (v.children) {
-            menuList.push((
-              <SubMenu key={currentPath} icon={v.meta.icon} title={v.meta.title}>
-                {getList(v.children, currentPath + '/')}
-              </SubMenu>
-            ))
-            if (pathname.match(new RegExp('^' + currentPath + '\\/\\w'))) {
-              openKeys.push(currentPath)
-            }
-          } else {
-            menuList.push((
-              <ItemMenu key={currentPath} icon={v.meta.icon}>
-                <Link to={currentPath}>{v.meta.title}</Link>
-              </ItemMenu>
-            ))
-          }
-        } else if (v.url) {
-          menuList.push((
-            <ItemMenu key={prePath + v.url} icon={v.meta.icon}>
-              <a href={v.url} target="_blank" rel="noreferrer">{v.meta.title}</a>
-            </ItemMenu>
-          ))
-        }
-      })
-      return menuList
-    }
-    return getList(routes)
-  }
+  const openKeys= [] // 用于根据当前路由默认展开子菜单
+  // const menuList = getMenuList()
+  // // 递归获取层级菜单
+  // function getMenuList () {
+  //   const getList = (routeList = [], prePath = '') => {
+  //     let menuList = []
+  //     routeList.forEach((v) => {
+  //       v.meta = v.meta || {}
+  //       if (v.redirect || v.path === '*' || v.meta.hideMenu) {
+  //         return
+  //       }
+  //       if (!getIsCanAccess(v.meta.accessId)) {
+  //         return
+  //       }
+  //       if (v.path === '/') {
+  //         menuList = menuList.concat(getList(v.children, '/'))
+  //       } else if (v.path !== undefined) {
+  //         const currentPath = prePath + v.path
+  //         if (v.children) {
+  //           menuList.push((
+  //             <SubMenu key={currentPath} icon={v.meta.icon} title={v.meta.title}>
+  //               {getList(v.children, currentPath + '/')}
+  //             </SubMenu>
+  //           ))
+  //           if (pathname.match(new RegExp('^' + currentPath + '\\/\\w'))) {
+  //             openKeys.push(currentPath)
+  //           }
+  //         } else {
+  //           menuList.push((
+  //             <ItemMenu key={currentPath} icon={v.meta.icon}>
+  //               <Link to={currentPath}>{v.meta.title}</Link>
+  //             </ItemMenu>
+  //           ))
+  //         }
+  //       } else if (v.url) {
+  //         menuList.push((
+  //           <ItemMenu key={prePath + v.url} icon={v.meta.icon}>
+  //             <a href={v.url} target="_blank" rel="noreferrer">{v.meta.title}</a>
+  //           </ItemMenu>
+  //         ))
+  //       }
+  //     })
+  //     return menuList
+  //   }
+  //   return getList(routes)
+  // }
 
   return (
     <div className="c-PageLayout-sideBar">

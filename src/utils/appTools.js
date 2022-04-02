@@ -1,6 +1,5 @@
-import { routes } from '@/router'
+import  routes  from '@/router'
 import store from '@/store'
-import { RoutesItemTypeNew } from '@/types/routes'
 
 /**
  * 获取h5域名环境
